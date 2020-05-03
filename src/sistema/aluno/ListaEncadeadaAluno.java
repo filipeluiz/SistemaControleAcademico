@@ -14,7 +14,7 @@ public class ListaEncadeadaAluno {
     private NodeAluno last;
     private int qtd;
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         if(this.qtd == 0) {
           return true;
         }
