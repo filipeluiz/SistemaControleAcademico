@@ -8,11 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SistemaControleAcademico.jar" size="2852" download="eager" />
+    <jar href="SistemaControleAcademico.jar" size="49335" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SistemaControleAcademico" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="sistemacontroleacademico.SistemaControleAcademico"  name="SistemaControleAcademico" />
+  <jfx:javafx-desc  width="800" height="600" main-class="sistema.gui.SistemaControleAcademico"  name="SistemaControleAcademico" />
   <update check="always"/>
 </jnlp>

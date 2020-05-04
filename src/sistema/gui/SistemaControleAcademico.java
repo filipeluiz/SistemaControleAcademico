@@ -19,7 +19,7 @@ public class SistemaControleAcademico extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SistemaControleAcademicoFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("PrincipalView.fxml"));
         
         Scene scene = new Scene(root);
         

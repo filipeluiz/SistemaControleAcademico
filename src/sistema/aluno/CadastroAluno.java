@@ -28,4 +28,8 @@ public class CadastroAluno {
             }
         }
     }
+    
+    public void listar() {
+        alunos.exibir();
+    }
 }

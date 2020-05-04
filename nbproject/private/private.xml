@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/pessoa/Contato.java</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/pessoa/Aluno.java</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/pessoa/Pessoa.java</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/util/Node.java</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/sistemacontroleacademico/SistemaControleAcademicoFXML.fxml</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/util/ListaEncadeada.java</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/sistemacontroleacademico/SistemaControleAcademicoFXMLController.java</file>
-            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/sistemacontroleacademico/SistemaControleAcademico.java</file>
+            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/sistema/gui/SistemaControleAcademicoFXMLController.java</file>
+            <file>file:/home/filipe/NetBeansProjects/SistemaControleAcademico/src/sistema/gui/SistemaControleAcademico.java</file>
         </group>
     </open-files>
 </project-private>

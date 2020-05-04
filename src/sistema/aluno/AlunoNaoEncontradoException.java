@@ -9,15 +9,15 @@ package sistema.aluno;
  *
  * @author filipe
  */
-public class AlunoJaCadastradoException extends Exception {
+public class AlunoNaoEncontradoException extends Exception {
     private String cpf;
     
-    public AlunoJaCadastradoException(String cpf){
-        super("Aluno já cadastrado!");
+    public AlunoNaoEncontradoException(String cpf){
+        super("Aluno não encontrado!");
         this.cpf = cpf;
     }
     
     public String getCpf(){
         return cpf;
-    }    
+    }       
 }
