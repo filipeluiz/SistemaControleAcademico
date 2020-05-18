@@ -1,24 +1,32 @@
 package sistema.pessoa;
 
+import java.io.Serializable;
+
 /**
  *
  * @author filipe
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     protected String nome;
     protected String cpf;
     protected String dataNascimento;
     protected char sexo;
-    protected Contato contato;
+    public Contato contato;
     
-    public Pessoa(){}
+    public Pessoa() {
+        this.nome = "";
+        this.cpf = "";
+        this.dataNascimento = "";
+        this.sexo = ' ';        
+        this.contato = new Contato();        
+    }
     
-    public Pessoa(String nome, String cpf, String dataNascimento, char sexo, Contato contato) {
+    public Pessoa(String nome, String cpf, String dataNascimento, char sexo) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.contato = contato;
+        this.contato = new Contato();
     }
 
     public String getNome() {
@@ -48,6 +56,15 @@ public abstract class Pessoa {
     public char getSexo() {
         return sexo;
     }
+    
+    public String getSexoString() {
+        if(this.sexo == 'M') {
+            return "Masculino";
+        }
+        else {
+            return "Feminino";
+        }
+    }
 
     public void setSexo(char sexo) {
         this.sexo = sexo;
@@ -63,10 +80,10 @@ public abstract class Pessoa {
 
     @Override
     public String toString() {
-        return "Nome: " + this.getNome() + "\n" +
-               "CPF: " + this.getCpf() + "\n" +
-               "Data de Nascimento: " + this.getDataNascimento() + "\n" +
-               "Sexo: " + this.getSexo() + "\n" +
-               this.getContato();
+        return "\nNome: " + this.getNome() + 
+               "\nCPF: " + this.getCpf() + 
+               "\nData de Nascimento: " + this.getDataNascimento() + 
+               "\nSexo: " + this.getSexo() + 
+               "\n" + this.getContato();
     }
 }

@@ -1,13 +1,18 @@
 package sistema.pessoa;
 
+import java.io.Serializable;
+
 /**
  *
  * @author filipe
  */
-public class Contato {
+public class Contato implements Serializable{
     private String email;
     private String telefone;
     private String endereco;
+    
+    public Contato() {
+    }    
 
     public Contato(String email, String telefone, String endereco) {
         this.email = email;
