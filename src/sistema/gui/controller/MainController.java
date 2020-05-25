@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.gui.controller;
 
 import java.net.URL;
@@ -20,14 +15,15 @@ public class MainController implements Initializable {
     
     @FXML
     private AlunoController alunoController;
-    
     @FXML
-    private ProfessorController professorController;    
+    private ProfessorController professorController;  
+    @FXML
+    private DisciplinaController disciplinaController;
+    @FXML
+    private TurmaController turmaController;
     
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
+    public void initialize(URL location, ResourceBundle resources) {}
     
     public void setSistema(SistemaControleAcademico sistema) {
         this.sistema = sistema;           
@@ -35,13 +31,24 @@ public class MainController implements Initializable {
 
     public void carregarSistema(){       
         alunoController.setSistema(sistema); 
-        professorController.setSistema(sistema);          
+        professorController.setSistema(sistema);  
+        disciplinaController.setSistema(sistema);
+        turmaController.setSistema(sistema);
+        
         alunoController.carregar();
         professorController.carregar();         
+        disciplinaController.carregar();
+        turmaController.carregar();
+        
     }
     
-    public void gravarSistema() {
-        alunoController.gravar();
-        professorController.gravar();
-    }  
+/*    Não tem necessidade quando o aplicativo fechar e salvar os dados, 
+      a minha preferencia é quando cadastrar, editar ou remover e salvar na hora.  */
+    
+//    public void gravarSistema() {
+//        alunoController.gravar();
+//        professorController.gravar();
+//        disciplinaController.gravar();
+//        turmaController.gravar();
+//    }  
 }

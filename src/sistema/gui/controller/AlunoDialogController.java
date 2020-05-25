@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.gui.controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -52,7 +48,7 @@ public class AlunoDialogController {
         
         nameField.setText(aluno.getNome());
         cpfField.setText(aluno.getCpf());
-        if(aluno.getCpf() != ""){
+        if(!"".equals(aluno.getCpf())){
             cpfField.setEditable(false);
             cpfField.setBackground(Background.EMPTY);            
         }

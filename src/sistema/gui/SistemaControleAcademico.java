@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.gui;
 
 import java.io.IOException;
@@ -14,10 +9,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sistema.aluno.Aluno;
+import sistema.disciplina.Disciplina;
 import sistema.gui.controller.AlunoDialogController;
+import sistema.gui.controller.DisciplinaDialogController;
 import sistema.gui.controller.MainController;
 import sistema.gui.controller.ProfessorDialogController;
+import sistema.gui.controller.TurmaDialogController;
+import sistema.gui.controller.TurmaDialogMatriculaController;
+import sistema.gui.controller.AlunoMatriculadoDialogController;
 import sistema.professor.Professor;
+import sistema.turma.Turma;
 
 /**
  *
@@ -67,7 +68,7 @@ public class SistemaControleAcademico extends Application {
             MainController controllerMain = loaderMain.getController();
             controllerMain.setSistema(this);
             controllerMain.carregarSistema();
-            primaryStage.setOnCloseRequest(event -> controllerMain.gravarSistema()); 
+//            primaryStage.setOnCloseRequest(event -> controllerMain.gravarSistema()); 
         } catch (IOException e) {
             e.printStackTrace();
         }        
@@ -127,6 +128,114 @@ public class SistemaControleAcademico extends Application {
         }
     }    
     
+    public boolean mostraDialogDisciplina(Disciplina disciplina) {        
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SistemaControleAcademico.class.getResource("view/DisciplinaDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();          
+            
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastro disciplina");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);            
+            
+            DisciplinaDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setDisciplina(disciplina);  
+            
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();            
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }    
+    
+   public boolean mostraDialogTurma(Turma turma) {        
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SistemaControleAcademico.class.getResource("view/TurmaDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();   
+            
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastro Turma");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);  
+            
+            TurmaDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setTurma(turma); 
+            
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();            
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }  
+   
+    public boolean mostraDialogTurmaMatricular(Turma turma) {        
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SistemaControleAcademico.class.getResource("view/TurmaDialogMatricula.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();   
+            
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Matricular aluno");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);  
+            
+            TurmaDialogMatriculaController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setTurma(turma); 
+            
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();            
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }     
+    
+   public boolean mostraAlunoMatriculado(Turma turma) {        
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SistemaControleAcademico.class.getResource("view/AlunoMatriculadoDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();   
+            
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Alunos matriculados");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);  
+            
+            AlunoMatriculadoDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setTurma(turma); 
+            
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();            
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }     
+   
     public Stage getPrimaryStage() {
         return primaryStage;
     }    

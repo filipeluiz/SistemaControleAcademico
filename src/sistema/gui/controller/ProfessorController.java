@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.gui.controller;
 
 import java.io.EOFException;
@@ -25,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,7 +33,10 @@ import sistema.gui.SistemaControleAcademico;
  * @author filipe
  */
 public class ProfessorController implements Initializable {
-    
+    @FXML
+    private Button buttonEditar;
+    @FXML
+    private Button buttonRemover;    
     @FXML
     private TableView<Professor> tabela;
     @FXML
@@ -45,11 +44,23 @@ public class ProfessorController implements Initializable {
     @FXML
     private TableColumn<Professor, String> nomeCol;
     @FXML
+    private Label nomeFixo;
+    @FXML
+    private Label cpfFixo;
+    @FXML
+    private Label nascimentoFixo;
+    @FXML
+    private Label emailFixo;
+    @FXML
+    private Label telFixo;
+    @FXML
+    private Label sexoFixo;
+    @FXML
+    private Label enderecoFixo;      
+    @FXML
     private Label nomeLabel;
     @FXML
     private Label cpfLabel;
-    @FXML
-    private Label rgLabel;    
     @FXML
     private Label nascimentoLabel;
     @FXML
@@ -76,6 +87,9 @@ public class ProfessorController implements Initializable {
         nomeCol.setCellValueFactory((nome) -> new SimpleStringProperty(nome.getValue().getNome()));
         cpfCol.setSortable(false);
         nomeCol.setSortable(false);
+        
+        buttonEditar.setDisable(true);
+        buttonRemover.setDisable(true);        
   
         listaProfessor = cadastroProfessor.getListaProfessor();       
         mostraDetalhes(null); 
@@ -94,9 +108,19 @@ public class ProfessorController implements Initializable {
     
     private void mostraDetalhes(Professor professor) {
         if(professor != null) {
+            buttonEditar.setDisable(false);
+            buttonRemover.setDisable(false); 
+            
+            nomeFixo.setText("Nome:");
+            cpfFixo.setText("CPF:");
+            nascimentoFixo.setText("Data de Nascimento:");
+            sexoFixo.setText("Sexo:");
+            emailFixo.setText("E-mail");
+            telFixo.setText("Telefone");
+            enderecoFixo.setText("Endereço:");
+            
             nomeLabel.setText(professor.getNome());
             cpfLabel.setText(professor.getCpf());
-            rgLabel.setText(professor.getRg());
             nascimentoLabel.setText(professor.getDataNascimento());
             sexoLabel.setText(professor.getSexoString());         
             emailLabel.setText(professor.contato.getEmail());
@@ -122,6 +146,7 @@ public class ProfessorController implements Initializable {
             try {               
                 cadastroProfessor.cadastrar(novo);
                 atualizarTabela(); 
+                gravar();
             } catch (ProfessorJaCadastradoException e) {
                 Logger.getLogger(ProfessorController.class.getName()).log(Level.SEVERE, null, e);
                 Alert alert = new Alert(AlertType.WARNING);
@@ -141,6 +166,7 @@ public class ProfessorController implements Initializable {
             if (okClicked) {
                 atualizarTabela();
                 mostraDetalhes(selectedProfessor);
+                gravar();
             }
         } else {
             // Nada seleciondo.
@@ -153,16 +179,12 @@ public class ProfessorController implements Initializable {
     }
 
     @FXML
-    void info(ActionEvent event) {
-
-    }
-
-    @FXML
     void remover(ActionEvent event) {
         int selectedIndex = tabela.getSelectionModel().getSelectedIndex();
         if(selectedIndex != -1) {
             cadastroProfessor.remover(selectedIndex);
-            atualizarTabela();  
+            atualizarTabela();
+            gravar();
         } 
         else {
             // Nada seleciondo.
@@ -194,7 +216,8 @@ public class ProfessorController implements Initializable {
             ObjectOutputStream oos = new ObjectOutputStream(fout);            
             oos.writeObject(listaProfessor);
             oos.close();
-            fout.close();            
+            fout.close();
+            System.out.println("Gravou o arquivo professor.txt...");            
         }
         catch(Exception e) {
             System.out.println(e.toString());
@@ -202,7 +225,7 @@ public class ProfessorController implements Initializable {
     }
     
     public void carregar() {
-        System.out.println("\n Lendo o arquivo...");
+        System.out.println("Lendo o arquivo professor.txt");
         try {
             FileInputStream fin = new FileInputStream("professor.txt");
             ObjectInputStream ois = new ObjectInputStream(fin);

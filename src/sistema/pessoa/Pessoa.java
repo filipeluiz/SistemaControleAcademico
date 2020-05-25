@@ -80,10 +80,12 @@ public abstract class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "\nNome: " + this.getNome() + 
-               "\nCPF: " + this.getCpf() + 
-               "\nData de Nascimento: " + this.getDataNascimento() + 
-               "\nSexo: " + this.getSexo() + 
-               "\n" + this.getContato();
+        return "(" + this.getCpf() + ") - " + this.getNome();
     }
+    
+//               "\nNome: " + this.getNome() + 
+//               "\nCPF: " + this.getCpf() + 
+//               "\nData de Nascimento: " + this.getDataNascimento() + 
+//               "\nSexo: " + this.getSexo() + 
+//               "\n" + this.getContato();    
 }

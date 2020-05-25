@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.gui.controller;
 
 import java.io.EOFException;
@@ -25,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,13 +33,30 @@ import sistema.gui.SistemaControleAcademico;
  * @author filipe
  */
 public class AlunoController implements Initializable {
-
+    @FXML
+    private Button buttonEditar;
+    @FXML
+    private Button buttonRemover;
     @FXML
     private TableView<Aluno> tabela;
     @FXML
     private TableColumn<Aluno, String> cpfCol;
     @FXML
     private TableColumn<Aluno, String> nomeCol;
+    @FXML
+    private Label nomeFixo;
+    @FXML
+    private Label cpfFixo;
+    @FXML
+    private Label nascimentoFixo;
+    @FXML
+    private Label emailFixo;
+    @FXML
+    private Label telFixo;
+    @FXML
+    private Label sexoFixo;
+    @FXML
+    private Label enderecoFixo;    
     @FXML
     private Label nomeLabel;
     @FXML
@@ -74,6 +87,9 @@ public class AlunoController implements Initializable {
         nomeCol.setCellValueFactory((nome) -> new SimpleStringProperty(nome.getValue().getNome()));
         cpfCol.setSortable(false);
         nomeCol.setSortable(false);
+        
+        buttonEditar.setDisable(true);
+        buttonRemover.setDisable(true);
  
         listaAlunos = cadastroAluno.getListaAlunos();       
         mostraDetalhes(null); 
@@ -92,6 +108,17 @@ public class AlunoController implements Initializable {
     
     private void mostraDetalhes(Aluno aluno) {
         if(aluno != null) {
+            buttonEditar.setDisable(false);
+            buttonRemover.setDisable(false); 
+            
+            nomeFixo.setText("Nome:");
+            cpfFixo.setText("CPF:");
+            nascimentoFixo.setText("Data de Nascimento:");
+            sexoFixo.setText("Sexo:");
+            emailFixo.setText("E-mail");
+            telFixo.setText("Telefone");
+            enderecoFixo.setText("Endereço:");
+            
             nomeLabel.setText(aluno.getNome());
             cpfLabel.setText(aluno.getCpf());
             nascimentoLabel.setText(aluno.getDataNascimento());
@@ -119,6 +146,7 @@ public class AlunoController implements Initializable {
             try {               
                 cadastroAluno.cadastrar(novoAluno);
                 atualizarTabela(); 
+                gravar();
             } catch (AlunoJaCadastradoException e) {
                 Logger.getLogger(AlunoController.class.getName()).log(Level.SEVERE, null, e);
                 Alert alert = new Alert(AlertType.WARNING);
@@ -138,6 +166,7 @@ public class AlunoController implements Initializable {
             if (okClicked) {
                 atualizarTabela();
                 mostraDetalhes(selectedAluno);
+                gravar();
             }
         } else {
             // Nada seleciondo.
@@ -154,7 +183,8 @@ public class AlunoController implements Initializable {
         int selectedIndex = tabela.getSelectionModel().getSelectedIndex();
         if(selectedIndex != -1) {
             cadastroAluno.remover(selectedIndex);
-            atualizarTabela();  
+            atualizarTabela(); 
+            gravar();
         } 
         else {
             // Nada seleciondo.
@@ -165,13 +195,6 @@ public class AlunoController implements Initializable {
                 alert.showAndWait();            
         }
     }    
-    
-    @FXML
-    void system(ActionEvent event) {
-        System.out.println(sistema);        
-        System.out.println(listaAlunos);
-        System.out.println(cadastroAluno.getListaAlunos());
-    }
     
     public void atualizarTabela() {
         listaAlunos = cadastroAluno.getListaAlunos();
@@ -186,7 +209,8 @@ public class AlunoController implements Initializable {
             ObjectOutputStream oos = new ObjectOutputStream(fout);            
             oos.writeObject(listaAlunos);
             oos.close();
-            fout.close();            
+            fout.close();     
+            System.out.println("Gravou o arquivo aluno.txt...");
         }
         catch(Exception e) {
             System.out.println(e.toString());
@@ -194,7 +218,7 @@ public class AlunoController implements Initializable {
     }
     
     public void carregar() {
-        System.out.println("\n Lendo o arquivo...");
+        System.out.println("Lendo o arquivo aluno.txt");
         try {
             FileInputStream fin = new FileInputStream("aluno.txt");
             ObjectInputStream ois = new ObjectInputStream(fin);

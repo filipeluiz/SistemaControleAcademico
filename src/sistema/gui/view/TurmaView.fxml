@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistema.gui.controller.TurmaController">
+     <children>
+        <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="691.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <children>
+              <HBox alignment="CENTER_LEFT">
+                 <VBox.margin>
+                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                 </VBox.margin>
+                 <children>
+                    <Button mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar">
+                       <HBox.margin>
+                          <Insets left="10.0" right="10.0" />
+                       </HBox.margin>
+                    </Button>
+                    <Button fx:id="buttonEditar" mnemonicParsing="false" onAction="#editar" text="Editar">
+                       <HBox.margin>
+                          <Insets left="10.0" right="10.0" />
+                       </HBox.margin>
+                    </Button>
+                    <Button fx:id="buttonRemover" mnemonicParsing="false" onAction="#remover" text="Remover">
+                       <HBox.margin>
+                          <Insets left="10.0" right="10.0" />
+                       </HBox.margin>
+                    </Button>
+                  <Button fx:id="buttonMatricular" mnemonicParsing="false" onAction="#matriculaAlunos" prefHeight="26.0" prefWidth="231.0" text="Matricular alunos na turma">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#system" text="Button" />
+                 </children>
+              </HBox>
+              <TableView fx:id="tabela" maxHeight="245.0">                                
+                <columns>
+                  <TableColumn fx:id="turmaCol" prefWidth="75.0" resizable="false" styleClass="colunaCenter" text="Turma" />
+                  <TableColumn fx:id="disciplinaCol" prefWidth="84.0" resizable="false" styleClass="colunaCenter" text="Disciplina" />
+                  <TableColumn fx:id="horariosCol" prefWidth="75.0" styleClass="colunaCenter" text="Horários" />
+                  <TableColumn fx:id="professorCol" prefWidth="343.0" resizable="false" text="Professor" />
+                </columns>
+                 <VBox.margin>
+                    <Insets left="20.0" right="20.0" />
+                 </VBox.margin>
+                 <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                 </columnResizePolicy>
+              </TableView>
+              <AnchorPane>
+                 <VBox.margin>
+                    <Insets left="20.0" right="20.0" top="20.0" />
+                 </VBox.margin>
+                 <children>
+                    <GridPane>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="152.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="458.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                       <children>
+                          <Label fx:id="codigoTurmaFixo">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                          <Label fx:id="codigoDisciplinaFIxo" GridPane.rowIndex="1">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                        <Label fx:id="horarioFixo" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                          <Label fx:id="professorFixo" GridPane.rowIndex="3">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                          <Label fx:id="periodoFixo" GridPane.rowIndex="4">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                        <Label fx:id="qtdMaxFixo" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Button fx:id="buttonMatriculados" mnemonicParsing="false" onAction="#info" prefHeight="26.0" prefWidth="158.0" text="Alunos Matriculados" GridPane.rowIndex="6" />
+                          <Label fx:id="codigoTurmaLabel" GridPane.columnIndex="1">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                          <Label fx:id="CodigoDisciplinaLabel" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                        <Label fx:id="horarioLabel" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                          <Label fx:id="professorLabel" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                          <Label fx:id="periodoLetivoLabel" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                             <GridPane.margin>
+                                <Insets left="10.0" />
+                             </GridPane.margin>
+                          </Label>
+                        <Label fx:id="qtdMaxLabel" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                       </children>
+                    </GridPane>
+                 </children>
+              </AnchorPane>
+           </children>
+        </VBox>
+     </children>        
+</AnchorPane>

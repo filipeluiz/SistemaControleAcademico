@@ -1,3 +1,7 @@
 .fundoImage {
     -fx-background-image: url(../img/fundoEngrenagem.jpg);
 }
+
+.colunaCenter {
+    -fx-alignment: center;
+}

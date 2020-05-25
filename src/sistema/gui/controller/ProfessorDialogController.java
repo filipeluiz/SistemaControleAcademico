@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.gui.controller;
 
 import java.net.URL;
@@ -32,8 +27,6 @@ public class ProfessorDialogController implements Initializable {
     private TextField nameField;
     @FXML
     private TextField cpfField;
-    @FXML
-    private TextField rgField;    
     @FXML
     private TextField emailField;
     @FXML
@@ -69,7 +62,6 @@ public class ProfessorDialogController implements Initializable {
             cpfField.setEditable(false);
             cpfField.setBackground(Background.EMPTY);            
         }
-        rgField.setText(professor.getRg());
         nascimentoField.setValue(Date.parse(professor.getDataNascimento()));
         //Como ativar radio button
         telefoneField.setText(professor.getContato().getTelefone());
@@ -91,7 +83,6 @@ public class ProfessorDialogController implements Initializable {
         if (isInputValid()) {        
             professor.setNome(nameField.getText());
             professor.setCpf(Validar.imprimeCPF(cpfField.getText()));
-            professor.setRg(Validar.imprimeRG(rgField.getText()));
             professor.setDataNascimento(Date.format(nascimentoField.getValue()));
             RadioButton radio = (RadioButton) grupoSexo.getSelectedToggle();   
             professor.setSexo(radio.getText().charAt(0));
@@ -112,9 +103,6 @@ public class ProfessorDialogController implements Initializable {
         }
         if (!Validar.isCPF(cpfField.getText())) {
             errorMessage += "CPF inválido\n"; 
-        }
-        if (!Validar.isRG(rgField.getText())) {
-            errorMessage += "RG inválido!\n";
         }
         if (Date.validDate(nascimentoField.getValue())) {
             errorMessage += "Data de nascimento inválido!\n"; 
@@ -141,7 +129,6 @@ public class ProfessorDialogController implements Initializable {
             alert.setHeaderText("Por favr inserir os campo válido!");
             alert.setContentText(errorMessage);
             alert.showAndWait();
-            System.out.println(Validar.imprimeTel(telefoneField.getText()));
             return false;
         }      
     }

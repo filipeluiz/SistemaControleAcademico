@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sistema.professor;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  *
  * @author filipe
  */
-public class CadastroProfessor {
+public class CadastroProfessor implements Serializable {
     private LinkedList<Professor> listaProfessor;
     
     public CadastroProfessor(LinkedList<Professor> professor) {

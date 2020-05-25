@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="613.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistema.gui.controller.MainController">
+<AnchorPane id="AnchorPane" prefHeight="573.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistema.gui.controller.MainController">
    <children>
       <TabPane minHeight="0.0" minWidth="0.0" prefHeight="566.0" prefWidth="650.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -17,6 +17,16 @@
                 <content>
                     <fx:include fx:id="professor" source="ProfessorView.fxml" />
                 </content>
+            </Tab>
+            <Tab text="Disciplina">
+              <content>
+                <fx:include fx:id="disciplina" source="DisciplinaView.fxml" />
+              </content>
+            </Tab>
+            <Tab text="Turma">
+              <content>
+                <fx:include fx:id="turma" source="TurmaView.fxml" />
+              </content>
             </Tab>
         </tabs>
       </TabPane>
