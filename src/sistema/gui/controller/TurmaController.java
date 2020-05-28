@@ -140,12 +140,20 @@ public class TurmaController implements Initializable {
             qtdMaxLabel.setText(Integer.toString(turma.getQtdMaxAluno()));    
         }
         else {
+            codigoTurmaFixo.setText("");
+            codigoDisciplinaFIxo.setText("");
+            horarioFixo.setText("");
+            professorFixo.setText("");
+            periodoFixo.setText("");
+            qtdMaxFixo.setText("");           
             codigoTurmaLabel.setText("");
             CodigoDisciplinaLabel.setText("");
             horarioLabel.setText("");
             professorLabel.setText("");         
             periodoLetivoLabel.setText(""); 
             qtdMaxLabel.setText(""); 
+            buttonMatricular.setVisible(false);
+            buttonMatriculados.setVisible(false);            
         }
     }    
     
@@ -176,15 +184,15 @@ public class TurmaController implements Initializable {
             boolean okClicked = sistema.mostraDialogTurma(selectedTurma);
             if(okClicked){              
                 atualizarTabela();
-                mostraDetalhes(selectedTurma);
+//                mostraDetalhes(selectedTurma);
                 gravar();
             }
         } else{    
             // Nada seleciondo.
             Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("Nenhuma seleção");
-                alert.setHeaderText("Nenhuma Pessoa Selecionada");
-                alert.setContentText("Por favor, selecione uma pessoa na tabela.");
+                alert.setHeaderText("Nenhuma Turma Selecionada");
+                alert.setContentText("Por favor, selecione uma turma na tabela.");
                 alert.showAndWait();
         }            
     }
@@ -214,7 +222,6 @@ public class TurmaController implements Initializable {
             boolean okClicked = sistema.mostraDialogTurmaMatricular(selectedTurma);
             if(okClicked){              
                 atualizarTabela();
-                mostraDetalhes(selectedTurma);
                 gravar();
             }
         } else{    
@@ -243,11 +250,6 @@ public class TurmaController implements Initializable {
                 alert.setContentText("Por favor, selecione uma pessoa na tabela.");
                 alert.showAndWait();            
         }
-    }
-    
-    @FXML
-    void system(ActionEvent event) {
-        System.out.println(listaTurma);
     }
  
     public void atualizarTabela() {

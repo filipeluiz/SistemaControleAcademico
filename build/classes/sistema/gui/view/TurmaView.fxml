@@ -41,7 +41,6 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#system" text="Button" />
                  </children>
               </HBox>
               <TableView fx:id="tabela" maxHeight="245.0">                                
